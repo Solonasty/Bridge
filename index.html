@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bridge</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- SPRITE -->
+
+<svg style="display: none;">
+
+    <symbol id="facebook" viewBox="0 0 24 24" >
+        <g>
+            <path d="M17.525,9H14V7c0-1.032,0.084-1.682,1.563-1.682h1.868v-3.18C16.522,2.044,15.608,1.998,14.693,2 C11.98,2,10,3.657,10,6.699V9H7v4l3-0.001V22h4v-9.003l3.066-0.001L17.525,9z"/>
+        </g>
+    </symbol>
+
+    <symbol id="twitter" viewBox="0 0 30 30" >
+        <g>
+            <path d="M28,6.937c-0.957,0.425-1.985,0.711-3.064,0.84c1.102-0.66,1.947-1.705,2.345-2.951c-1.03,0.611-2.172,1.055-3.388,1.295 c-0.973-1.037-2.359-1.685-3.893-1.685c-2.946,0-5.334,2.389-5.334,5.334c0,0.418,0.048,0.826,0.138,1.215 c-4.433-0.222-8.363-2.346-10.995-5.574C3.351,6.199,3.088,7.115,3.088,8.094c0,1.85,0.941,3.483,2.372,4.439 c-0.874-0.028-1.697-0.268-2.416-0.667c0,0.023,0,0.044,0,0.067c0,2.585,1.838,4.741,4.279,5.23 c-0.447,0.122-0.919,0.187-1.406,0.187c-0.343,0-0.678-0.034-1.003-0.095c0.679,2.119,2.649,3.662,4.983,3.705 c-1.825,1.431-4.125,2.284-6.625,2.284c-0.43,0-0.855-0.025-1.273-0.075c2.361,1.513,5.164,2.396,8.177,2.396 c9.812,0,15.176-8.128,15.176-15.177c0-0.231-0.005-0.461-0.015-0.69C26.38,8.945,27.285,8.006,28,6.937z"/>
+        </g>
+    </symbol>
+
+    <symbol id="instagram" viewBox="0 0 32 32" >
+        <g>
+            <path d="M 8 5 C 6.355469 5 5 6.355469 5 8 L 5 24 C 5 25.644531 6.355469 27 8 27 L 24 27 C 25.644531 27 27 25.644531 27 24 L 27 8 C 27 6.355469 25.644531 5 24 5 Z M 21 8 L 24 8 L 24 11 L 21 11 Z M 16 12 C 18.222656 12 20 13.777344 20 16 C 20 18.222656 18.222656 20 16 20 C 13.777344 20 12 18.222656 12 16 C 12 13.777344 13.777344 12 16 12 Z M 7 14 L 10.34375 14 C 10.121094 14.625 10 15.300781 10 16 C 10 19.300781 12.699219 22 16 22 C 19.300781 22 22 19.300781 22 16 C 22 15.300781 21.878906 14.625 21.65625 14 L 25 14 L 25 24 C 25 24.566406 24.566406 25 24 25 L 8 25 C 7.433594 25 7 24.566406 7 24 Z"/>
+        </g>
+    </symbol>
+
+    <symbol id="person" viewBox="0 0 49 49" >
+        <g>
+            <path d="M24.5 23.98C28.354 23.98 31.5 20.832 31.5 16.9133C31.5 12.9946 28.354 9.84668 24.5 9.84668C20.646 9.84668 17.5 12.9946 17.5 16.9133C17.5 20.832 20.646 23.98 24.5 23.98ZM33.5 16.9133C33.5 21.9227 29.4725 25.98 24.5 25.98C19.5275 25.98 15.5 21.9227 15.5 16.9133C15.5 11.904 19.5275 7.84668 24.5 7.84668C29.4725 7.84668 33.5 11.904 33.5 16.9133Z"/>
+            <path d="M18.6254 29.7991C18.3971 29.3313 17.8814 29.0785 17.3786 29.2021C11.9745 30.5301 6.5 33.238 6.5 37.3116V39.845C6.5 40.9495 7.39543 41.845 8.5 41.845H40.5C41.6046 41.845 42.5 40.9495 42.5 39.845V37.3116C42.5 33.238 37.0255 30.5301 31.6214 29.2021C31.1186 29.0785 30.6029 29.3313 30.3746 29.7991L26.3105 32.7991C25.4218 32.7993 24.9693 32.7993 24.5248 32.7993C24.0637 32.7992 23.6112 32.7992 22.6893 32.7994L18.6254 29.7991ZM31.7205 31.2915L26.9689 34.799L26.3109 34.7991C25.4163 34.7993 24.9661 34.7993 24.524 34.7993C24.0658 34.7992 23.6163 34.7992 22.6898 34.7994L22.0312 34.7996L17.2795 31.2915C14.9077 31.9204 12.6639 32.8054 11.0162 33.8953C9.19262 35.1016 8.5 36.2704 8.5 37.3116V39.845H40.5V37.3116C40.5 36.2704 39.8074 35.1016 37.9838 33.8953C36.3361 32.8054 34.0924 31.9204 31.7205 31.2915Z"/>
+        </g>
+    </symbol>
+
+    <symbol id="placeholder" viewBox="0 0 32 32" >
+        <g>
+            <path d="M16,0C8.832,0,3,5.832,3,13c0,11.441,11.986,18.566,12.496,18.864C15.651,31.954,15.826,32,16,32
+            s0.349-0.046,0.504-0.136C17.014,31.566,29,24.441,29,13C29,5.832,23.168,0,16,0z M15.999,29.818C13.779,28.366,5,22.049,5,13
+            C5,6.935,9.935,2,16,2c6.064,0,11,4.935,11,11C27,22.029,18.219,28.363,15.999,29.818z M16,10c-1.656,0-3,1.344-3,3s1.344,3,3,3
+            c1.656,0,3-1.344,3-3S17.656,10,16,10z"/>
+        </g>
+    </symbol>
+
+    <symbol id="phone" viewBox="0 0 477.156 477.156" >
+        <g>
+            <path d="M475.009,380.316l-2.375-7.156c-5.625-16.719-24.062-34.156-41-38.75l-62.688-17.125c-17-4.625-41.25,1.594-53.688,14.031
+            l-22.688,22.688c-82.453-22.28-147.109-86.938-169.359-169.375L145.9,161.94c12.438-12.438,18.656-36.656,14.031-53.656
+            l-17.094-62.719c-4.625-16.969-22.094-35.406-38.781-40.969L96.9,2.19c-16.719-5.563-40.563,0.063-53,12.5L9.962,48.659
+            C3.899,54.69,0.024,71.94,0.024,72.003c-1.187,107.75,41.063,211.562,117.281,287.781
+            c76.031,76.031,179.454,118.219,286.891,117.313c0.562,0,18.312-3.813,24.375-9.845l33.938-33.938
+            C474.946,420.878,480.571,397.035,475.009,380.316z"/>
+        </g>
+    </symbol>
+
+    <symbol id="mail" viewBox="0 0 32 32" >
+        <g>
+            <path d="M29,6H3L2.92,6a.78.78,0,0,0-.21,0l-.17.07a.65.65,0,0,0-.15.1.67.67,0,0,0-.15.14l-.06.06a.36.36,0,0,0,0,.09,1.08,1.08,0,0,0-.08.19A1.29,1.29,0,0,0,2,6.9S2,7,2,7V25a1,1,0,0,0,1,1H29a1,1,0,0,0,1-1V7A1,1,0,0,0,29,6ZM16,14.81,6.2,8H27.09ZM4,24V8.91l11.43,7.91,0,0a1.51,1.51,0,0,0,.18.09l.08,0A1.09,1.09,0,0,0,16,17h0a1,1,0,0,0,.41-.1l.07,0,0,0L28,9.79V24Z"/>
+        </g>
+    </symbol>
+
+    <symbol id="arrow-up" viewBox="0 0 16 16">
+        <g>
+            <path d="M13,19 L13,7.83 L17.88,12.71 C18.27,13.1 18.91,13.1 19.3,12.71 C19.69,12.32 19.69,11.69 19.3,11.3 L12.71,4.71 C12.32,4.32 11.69,4.32 11.3,4.71 L4.7,11.29 C4.31,11.68 4.31,12.31 4.7,12.7 C5.09,13.09 5.72,13.09 6.11,12.7 L11,7.83 L11,19 C11,19.55 11.45,20 12,20 C12.55,20 13,19.55 13,19 Z"/>
+        </g>
+    </symbol>
+
+</svg>
+
+    <!-- HEADER -->
+
+    <header class="header">
+        <div class="header_inner">
+            <div class="header_logo">
+                <img src="images/header/logo.png" alt="Logo">
+            </div>
+            <nav class="nav">
+                <a href="#header" class="link nav_link">Home</a>
+                <a href="#courses" class="link nav_link">Courses</a>
+                <a href="#tutors" class="link nav_link">Instructors</a>
+                <a href="#facts" class="link nav_link">About Us</a>
+                <a href="#courses" class="link nav_link">Pricing</a>
+                <a href="#footer_inner" class="link nav_link">Contact</a>
+                <a href="#register" class="link nav_button">Register now</a>
+            </nav>
+
+            <button class="burger" type="button">
+                <span class="burger_item">Menu</span>
+            </button>
+            <div class="popup_burger"></div>
+        </div>
+    </div>
+    </header>
+
+    <!-- INTRO -->
+
+    <div class="intro" id="intro">
+        <div class="container container_intro">
+
+            <div class="arrows left" onclick="plusSlides(-1)">&#10094;</div>
+            <div class="arrows right" onclick="plusSlides(1)">&#10095;</div>
+
+            <div class="slider_intro">
+                <div class="intro_inner block"> <!-- relative -->
+                    <div class="intro_content content1">
+                        <h1 class="intro_title">Hello World</h1>
+                        <h2 class="intro_subtitle">Learn the language,<br> not just words.</h2>
+                        <p class="intro_text">Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</p>                        
+                        <div class="intro_btn">
+                            <a href="#" class="link intro_btn--read">Read more</a>
+                        </div>
+                    </div>
+                    <div class="intro_photo"> <!-- 1200px relative без позиционирования-->
+                        <img class="intro_photo--large photoL1" src="images/intro/slider-img-1.png" alt=""> <!-- relative относительно себя-->
+                        <img class="intro_photo--small photoS1" src="images/intro/slider-img-2.png" alt=""> <!-- absolute 1200 intro_photo , 1800 intro_inner-->
+                    </div>
+                </div>
+
+                <div class="intro_inner block"> <!-- relative -->
+                    <div class="intro_content content2">
+                        <h1 class="intro_title">Hello World</h1>
+                        <h2 class="intro_subtitle">Learn the language,<br> not just words.</h2>
+                        <p class="intro_text">Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</p>                        
+                        <div class="intro_btn">
+                            <a href="#" class="link intro_btn--read">Read more</a>
+                        </div>
+                    </div>
+                    <div class="intro_photo"> <!-- 1200px relative без позиционирования-->
+                        <img class="intro_photo--large photoL2" src="images/intro/slider-img-3.png" alt=""> <!-- relative относительно себя-->
+                        <img class="intro_photo--small photoS2" src="images/intro/slider-img-4.png" alt=""> <!-- absolute 1200 intro_photo , 1800 intro_inner-->
+                    </div>
+                </div>
+
+                <div class="intro_inner block"> <!-- relative -->
+                    <div class="intro_content content3">
+                        <h1 class="intro_title">Hello World</h1>
+                        <h2 class="intro_subtitle">Learn the language,<br> not just words.</h2>
+                        <p class="intro_text">Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</p>                        
+                        <div class="intro_btn">
+                            <a href="#" class="link intro_btn--read">Read more</a>
+                        </div>
+                    </div>
+                    <div class="intro_photo"> <!-- 1200px relative без позиционирования-->
+                        <img class="intro_photo--large photoL3" src="images/intro/slider-img-5.png" alt=""> <!-- relative относительно себя-->
+                        <img class="intro_photo--small photoS3" src="images/intro/slider-img-6.png" alt=""> <!-- absolute 1200 intro_photo , 1800 intro_inner-->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="intro_icons">       
+                <a href="#" class="intro_icon">
+                    <img class="icon_img" src="images/intro/icon-1.png" alt="Language">
+                </a>
+                <a href="#" class="intro_icon">
+                    <img class="icon_img" src="images/intro/icon-2.png" alt="Language">
+                </a>
+                <a href="#" class="intro_icon">
+                    <img class="icon_img" src="images/intro/icon-3.png" alt="Language">
+                </a>
+                <a href="#" class="intro_icon">
+                    <img class="icon_img" src="images/intro/icon-4.png" alt="Language">
+                </a>
+                <a href="#" class="intro_icon">
+                    <img class="icon_img" src="images/intro/icon-5.png" alt="Language">
+                </a>
+                <a href="#" class="intro_icon">
+                    <img class="icon_img" src="images/intro/icon-6.png" alt="Language">
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FACTS -->
+
+    <div class="bg">
+    <section class="facts" id="facts">
+        <div class="container">
+
+            <div class="facts_content">
+                <h1 class="facts_title">ONLINE COURSES</h1>
+                <h2 class="facts_subtitle">Essential Fast Facts</h2>
+                <p class="facts_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="facts_essential">
+
+                <div class="facts_item">
+                    <img class="facts_item_icon" src="images/facts/icon-7.png" class="fact_img" alt="">
+                    <h3 class="facts_item_title">Notification & Emails</h3>
+                    <div class="facts_item_description">
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint.</p>
+                    </div>
+                </div>
+
+                <div class="facts_item">
+                    <img class="facts_item_icon" src="images/facts/icon-8.png" class="fact_img" alt="">
+                    <h3 class="facts_item_title">Certification</h3>
+                    <div class="facts_item_description">
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint.</p>
+                    </div>
+                </div>
+
+                <div class="facts_item">
+                    <img class="facts_item_icon" src="images/facts/icon-9.png" class="fact_img" alt="">
+                    <h3 class="facts_item_title">Europe Campus</h3>
+                    <div class="facts_item_description">
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES -->
+
+    <section class="courses" id="courses">
+        <div class="container">
+
+            <div class="courses_content">
+                <h1 class="courses_title">ONLINE COURSES</h1>
+                <h2 class="courses_subtitle">Wide range online courses</h2>
+                <p class="courses_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="courses_types">
+
+                <div class="courses_item">
+                    <img class ="courses_item_img" src="images/courses/courses-1.jpeg" alt="">
+                    <div class="courses_item_price">Free</div>
+                    <h3 class="courses_item_subtitle">Computer Science</h3>
+                    <h1 class="courses_item_title">BRENDA HARRIS</h1>
+                    <p class="courses_item_description">Lorem Ipsn gravida nibh vel velit auctor aliquet.Aenean sollicitudin, lorem quis bibendum auci elit conse</p>
+
+                    <div class="courses_item_actions">
+                        <div class="courses_btn">
+                            <a class="link courses_btn_item courses_btn_item--blue" href="#">Software</a>
+                        </div>
+
+                        <div class="courses_icon">
+                            <a href="#" target="blank">
+                                <svg class="courses_icon_img">
+                                    <use xlink:href="#person"></use>
+                                </svg>
+                            </a>
+                        </div>
+
+                    </div> 
+                </div>
+
+                <div class="courses_item">
+                    <img class ="courses_item_img" src="images/courses/courses-2.jpeg" alt="">
+                    <div class="courses_item_price">$200</div>
+                    <h3 class="courses_item_subtitle">Business English</h3>
+                    <h1 class="courses_item_title">BRENDA HARRIS</h1>
+                    <p class="courses_item_description">Lorem Ipsn gravida nibh vel velit auctor aliquet.Aenean sollicitudin, lorem quis bibendum auci elit conse</p>
+
+                    <div class="courses_item_actions">
+                        <div class="courses_btn">
+                            <a class="link courses_btn_item courses_btn_item--green" href="#">Software</a>
+                        </div>
+                        <div class="courses_icon">
+                            <a href="#" target="blank">
+                                <svg class="courses_icon_img">
+                                    <use xlink:href="#person"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="courses_item">
+                    <img class ="courses_item_img" src="images/courses/courses-3.jpeg" alt="">
+                    <div class="courses_item_price">$200</div>
+                    <h3 class="courses_item_subtitle">CPhotoshop Tutorial</h3>
+                    <h1 class="courses_item_title">BRENDA HARRIS</h1>
+                    <p class="courses_item_description">Lorem Ipsn gravida nibh vel velit auctor aliquet.Aenean sollicitudin, lorem quis bibendum auci elit conse</p>
+
+                    <div class="courses_item_actions">
+                        <div class="courses_btn">
+                            <a class="link courses_btn_item courses_btn_item--pink" href="#">Software</a>
+                        </div>
+                        <div class="courses_icon">
+                            <a href="#" target="blank">
+                                <svg class="courses_icon_img">
+                                    <use xlink:href="#person"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div> 
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+
+    <div class="reviews" id="reviews">
+        <div class="container">
+
+            <div class="carousel_inner">
+
+                <div class="carousel_item fade">
+                    <img src="images/reviews/reviews-1.png" class="carousel_photo" alt="">
+                    <p class="carousel_text">Diam maecenas sed enim ut sem viverra aliquet. Et sollicitudin ac orci phasellus egestas tellus rutrum. Orci eu lobortis elementum nibh tellus molestie nunc non.</p>
+                    <h1 class="carousel_autor">MARK MILLER</h1>
+                </div>
+
+                <div class="carousel_item fade">
+                    <img src="images/reviews/reviews-1.png" class="carousel_photo" alt="">
+                    <p class="carousel_text">At tellus at urna condimentum mattis pellentesque id. Nunc eget lorem dolor sed viverra ipsum nunc aliquet. Pretium viverra suspendisse potenti nullam.</p>
+                    <h1 class="carousel_autor">LANA WATSON</h1>
+                </div>
+
+                <div class="carousel_item fade">
+                    <img src="images/reviews/reviews-1.png" class="carousel_photo" alt="">
+                    <p class="carousel_text">Bridge is a life saver. I don't have the time or money for a college education. My goal is to become a freelance web developer, and thanks to Bridge, I'm really close.</p>
+                    <h1 class="carousel_autor">ARLIE BOURLAND</h1>
+                </div>
+
+            </div>
+
+        <div class="dots">
+            <div class="dot" onclick="currentSlideDot(1)"></div>
+            <div class="dot" onclick="currentSlideDot(2)"></div>
+            <div class="dot" onclick="currentSlideDot(3)"></div>
+        </div>
+    </div>
+    </div>
+
+    <!-- TUTORS -->
+
+    <section class="tutors" id="tutors">
+        <div class="container">
+
+            <div class="tutors_content">
+                <h1 class="tutors_title">ONLINE COURSES</h1>
+                <h2 class="tutors_subtitle">Wide range online courses</h2>
+                <p class="tutors_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="tutors_inner">
+
+                <div class="tutors_item">
+                    <img class="tutors_item_img" src="images/tutors/instructor-1.png" alt="">
+                    <h3 class="tutors_item_name">Brenda Harris</h3>
+                    <h1 class="tutors_item_occupation">TEACHER</h1>
+                    <p class="tutors_item_description">Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do eiusmodem por incididun ut labore et.</p>
+
+                    <div class="social">
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#twitter"></use>
+                            </svg>
+                        </a>
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#instagram"></use>
+                            </svg>
+                        </a>
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#facebook"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>   
+
+                <div class="tutors_item">
+                    <img class="tutors_item_img" src="images/tutors/instructor-2.png" alt="">
+                    <h3 class="tutors_item_name">Sherlock Anderson</h3>
+                    <h1 class="tutors_item_occupation">TEACHER</h1>
+                    <p class="tutors_item_description">Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do eiusmodem por incididun ut labore et.</p>
+
+                    <div class="social">
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#twitter"></use>
+                            </svg>
+                        </a>
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#instagram"></use>
+                            </svg>
+                        </a>
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#facebook"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tutors_item">
+                    <img class="tutors_item_img" src="images/tutors/instructor-3.png" alt="">
+                    <h3 class="tutors_item_name">Simona Rider</h3>
+                    <h1 class="tutors_item_occupation">TEACHER</h1>
+                    <p class="tutors_item_description">Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do eiusmodem por incididun ut labore et.</p>
+
+                    <div class="social">
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#twitter"></use>
+                            </svg>
+                        </a>
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#instagram"></use>
+                            </svg>
+                        </a>
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#facebook"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tutors_item">
+                    <img class="tutors_item_img" src="images/tutors/instructor-4.png" alt="">
+                    <h3 class="tutors_item_name">Victor Green</h3>
+                    <h1 class="tutors_item_occupation">TEACHER</h1>
+                    <p class="tutors_item_description">Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do eiusmodem por incididun ut labore et.</p>
+
+                    <div class="social">
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#twitter"></use>
+                            </svg>
+                        </a>
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#instagram"></use>
+                            </svg>
+                        </a>
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#facebook"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTER -->
+
+    <section class="register" id="register">
+        <div class="container">
+            <div class="register_content">
+                <div class="register_item">
+                    <h1 class="register_title">ONLINE COURSES</h1>
+                    <h2 class="register_subtitle">Register now and save.</h2>
+                    <p class="register_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                </div>
+                <div class="register_numbers">
+                    <h4 class="number_item"><span class="number number_members">1 </span>  Members</h4>
+                    <h4 class="number_item"><span class="number number_classes">1 </span>  Classes</h4>
+                    <h4 class="number_item"><span class="number number_videos">1 </span>  Videos</h4>
+                    <h4 class="number_item"><span class="number number_score">1 </span>  Score</h4>
+                </div>    
+            </div>
+            <div class="register_inner">
+
+                <form class="register_form" name="register_form" id="register_form">
+                    <h3 class="register_form_title">Register Now</h3>
+                    <p class="register_form_text">The best tutors in town.</p>
+
+                    <label for="userName"></label>
+                    <input type="text" placeholder="Your Name" name="userName" id="userName" required>
+                    
+                    <label for="registerMail"></label>
+                    <input type="text" placeholder="Your Email Adress" name="registerMail" id="registerMail" required>
+
+                    <label for="userPhone"></label>
+                    <input type="text" placeholder="Your Phone Number" name="userPhone" id="userPhone" required>
+
+                    <label for="pw"></label>
+                    <input type="password" id= "pw" placeholder="Password" required>
+
+
+                    <ul class="helper-text">
+                        <li class="length">Must be at least 8 characters long.</li>
+                        <li class="lowercase">Must contain a lowercase letter.</li>
+                        <li class="uppercase">Must contain an uppercase letter.</li>
+                        <li class="special">Must contain a number or special character.</li>
+                    </ul>
+
+                    <button type="submit" class="registerbtn" id="registerbtn">Register</button>
+                </form>
+
+                <form class="register_form sign" name="register_form" id="register_form">
+                    <h3 class="register_form_title">Sign In</h3>
+                    <p class="register_form_text">Have an account?</p>
+                    <label for="userMail"></label>
+                    <input type="text" placeholder="Your Email Adress" name="userMail" id="userMail" required>
+
+                    <label for="userPw"></label>
+                    <input type="password" id= "userPw" placeholder="Password" required>
+
+
+                    <button type="submit" class="signbtn"  id="signbtn">Sign In</button>
+                </form>
+
+                
+            </div>
+        
+        </div>
+    </section>
+
+    <!-- CLIENTS -->
+
+    <div class="clients" id="clients">
+        <div class="container">
+
+            <div class="client_icons">       
+                <a href="#" class="client_icon">
+                    <img class="client_img" src="images/clients/client-1.png" alt="Language">
+                </a>
+                <a href="#" class="client_icon">
+                    <img class="client_img" src="images/clients/client-2.png" alt="Language">
+                </a>
+                <a href="#" class="client_icon">
+                    <img class="client_img" src="images/clients/client-3.png" alt="Language">
+                </a>
+                <a href="#" class="client_icon">
+                    <img class="client_img" src="images/clients/client-4.png" alt="Language">
+                </a>
+                <a href="#" class="client_icon">
+                    <img class="client_img" src="images/clients/client-5.png" alt="Language">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div class="container">
+
+            <div class="bottonUp">
+                <a href="#" target="blank">
+                    <svg class="arrowUp">
+                        <use xlink:href="#arrow-up"></use>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="footer_inner" id="footer_inner">
+
+                <div class="footer_item">
+                    <h3 class="footer_title">About School</h3>
+                    <p class="footer_text">Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros</p>
+                    <h5 class="footer_subtitle">Contact details</h5>
+
+                    <div class="contacts">
+                        <div class="contacts_item">
+                            <svg class="contacts_icon">
+                                <use xlink:href="#placeholder"></use>
+                            </svg>
+                            <p class="contacts_text">Langebrogade 1DK, Copenhagen</p>
+                        </div>
+                        <div class="contacts_item">
+                            <svg class="contacts_icon">
+                                <use xlink:href="#phone"></use>
+                            </svg>
+                            <p class="contacts_text">+0080-33-666-234</p>
+                        </div>
+                        <div class="contacts_item">
+                            <svg class="contacts_icon">
+                                <use xlink:href="#mail"></use>
+                            </svg>
+                            <p class="contacts_text">bridge@example.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer_item">
+                    <h3 class="footer_title">Popular Courses</h3>
+
+                    <h5 class="footer_course">Computer Science</h5>
+                    <h1 class="footer_tutor">BRENDA HARRIS</h1>
+
+                    <h5 class="footer_course">Business English</h5>
+                    <h1 class="footer_tutor">BRENDA HARRIS</h1>
+
+                    <h5 class="footer_course">Photoshop Tutorial</h5>
+                    <h1 class="footer_tutor">SARAH ROGERS</h1>
+
+                    <h5 class="footer_course">Business Course</h5>
+                    <h1 class="footer_tutor">SARAH ROGERS</h1>
+                </div>
+
+                <div class="footer_item">
+                    <h3 class="footer_title">Useful Links</h3>
+                    <a href=""></a>
+                        <h5 class="footer_link">Building an Excellence</h5>
+                    </a>
+                    <a href=""></a>
+                        <h5 class="footer_link">Choose Your Destination</h5>
+                    </a>  
+                    <a href=""></a>
+                        <h5 class="footer_link">Belive in Yourself</h5>
+                    </a>  
+                    <a href=""></a>
+                        <h5 class="footer_link">Fast Way of Learning!</h5>
+                    </a>  
+                    <a href=""></a>
+                        <h5 class="footer_link">Educating Leaders</h5>
+                    </a>      
+                </div>
+
+                <div class="footer_item">
+                    <h3 class="footer_title">Our Place</h3>
+                    <div class="footer_map" style="position:relative;overflow:hidden;">
+                        <a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;"></a>
+                        <a href="https://yandex.ru/maps/213/moscow/house/novaya_ploshchad_16/Z04YcAVpSEYDQFtvfXt0d3plYQ==/?ll=37.630059%2C55.756193&utm_medium=mapframe&utm_source=maps&z=18" style="color:#eee;font-size:12px;position:absolute;top:14px;"></a>
+                        <iframe src="https://yandex.ru/map-widget/v1/-/CCUN40vbGA" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                <div class="copyright_item">
+                    <p>Copyright 2020 Qode Interactive.</p>
+                </div>
+                <div class="copyright_item">
+                    <div class="tel ">
+                        <a class="tel_link" href="tel:+78142332211">+7 (814) 233 22 11</a>
+                    </div>
+                    <div class="social footer_social">
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#twitter"></use>
+                            </svg>
+                        </a>
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#instagram"></use>
+                            </svg>
+                        </a>
+                        <a class="social_item" href="#" target="blank">
+                            <svg class="social_icon">
+                                <use xlink:href="#facebook"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+    </footer>
+
+</body>
+</html>
