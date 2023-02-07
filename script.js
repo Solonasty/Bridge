@@ -1,20 +1,20 @@
 // BURGER
 
-const burger = document.querySelector(".burger");
-const popupBurger = document.querySelector(".popup_burger");
-const body = document.body;
-const padding = document.querySelector(".header_logo");
+let burger = document.querySelector(".burger");
+let popupBurger = document.querySelector(".popup_burger");
+let body = document.body;
+let padding = document.querySelector(".header_logo");
 
-// Клонируем меню, чтобы задать свои стили для мобильной версии
-const nav = document.querySelector(".nav").cloneNode(1);
+// Clone menu for creating styles for mobile
+let nav = document.querySelector(".nav").cloneNode(1);
 
-// При клике на иконку hamb вызываем ф-ию hambHandler
+// Add to icon burger action hambHandler
 burger.addEventListener("click", hambHandler);
 
-// Выполняем действия при клике ..
+// Click actions:
 function hambHandler(e) {
   e.preventDefault();
-  // Переключаем стили элементов при клике
+  // Change styles on click
   popupBurger.classList.toggle("popup_open");
   burger.classList.toggle("popup_active");
   body.classList.toggle("noscroll");
@@ -22,20 +22,20 @@ function hambHandler(e) {
   renderPopup();
 }
 
-// Здесь мы рендерим элементы в наш попап
+// Copy nav to burger
 function renderPopup() {
   popupBurger.appendChild(nav);
 }
 
-// Код для закрытия меню при нажатии на ссылку
-const links = Array.from(nav.children);
+// Code for closing menu
+let links = Array.from(nav.children);
 
-// Для каждого элемента меню при клике вызываем ф-ию
+// For each clicked menu item call the function closeOnClick
 links.forEach((link) => {
   link.addEventListener("click", closeOnClick);
 });
 
-// Закрытие попапа при клике на меню
+// Closing the pop-up on click on the menu
 function closeOnClick() {
   popupBurger.classList.remove("popup_open");
   burger.classList.remove("popup_active");
@@ -44,7 +44,7 @@ function closeOnClick() {
 }
 
 
-// // INTRO SLIDER
+// INTRO SLIDER
 
 let slideIndex = 0;
 let timeoutId = null;
@@ -81,7 +81,7 @@ function showSlides() {
         if(timeoutId) {
         clearTimeout(timeoutId);
         }
-    timeoutId = setTimeout(showSlides, 2000);
+    timeoutId = setTimeout(showSlides, 4000);
 }
 
 
@@ -92,13 +92,13 @@ registerbtn.addEventListener('click', store);
 
 function store(event){
     event.preventDefault();
-    var userName = document.getElementById('userName');
-    var registerMail = document.getElementById('registerMail');
-    var userPhone = document.getElementById('userPhone');
-    var pw = document.getElementById('pw');
-    var lowerCaseLetters = /[a-z]/g;
-    var upperCaseLetters = /[A-Z]/g;
-    var numbers = /[0-9]/g;
+    let userName = document.getElementById('userName');
+    let registerMail = document.getElementById('registerMail');
+    let userPhone = document.getElementById('userPhone');
+    let pw = document.getElementById('pw');
+    let lowerCaseLetters = /[a-z]/g;
+    let upperCaseLetters = /[A-Z]/g;
+    let numbers = /[0-9]/g;
 
     if(userName.value.length == 0){
         alert('Please fill in your name');
@@ -141,10 +141,10 @@ signbtn.addEventListener('click', check);
 
 function check(event){
     event.preventDefault();
-    var storedMail = localStorage.getItem('registerMail');
-    var storedPw = localStorage.getItem('pw');
-    var userMail = document.getElementById('userMail');
-    var userPw = document.getElementById('userPw');
+    let storedMail = localStorage.getItem('registerMail');
+    let storedPw = localStorage.getItem('pw');
+    let userMail = document.getElementById('userMail');
+    let userPw = document.getElementById('userPw');
 
     if(userMail.value == storedMail && userPw.value == storedPw){
         alert('You are logged in.');
