@@ -22,6 +22,7 @@ h1 {
     text-transform: uppercase;
     color: rgb(255, 182, 72);
 }
+
 h2 {
     font-size: 2.8rem;
     font-weight: 400;
@@ -83,8 +84,11 @@ p {
 /* HEADER */
 
 .header {
-    padding: 0 2rem 1rem;
-    background-color: #f9fafa;
+    padding: 0 2rem 0;
+    background-color: #f9fafaf7;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header_inner {
@@ -101,7 +105,7 @@ p {
 }
 
 .nav_link {
-    padding: 3rem 1.8rem 2rem;
+    padding: 2rem 1.8rem 2rem;
     border-top: 5px solid #eab03300;
     font-weight: 300;
 }
@@ -373,11 +377,11 @@ align-items: center;
    transition: 0.6s ease;
    border-radius: 0 3px 3px 0;
    user-select: none;
-}   
+}
 
 .left {
    left: 0;
-}  
+}
 
 .right {
     right: 0;
@@ -627,9 +631,9 @@ align-items: center;
     animation-name: fade;
     animation-duration: 1.5s;
   }
-  
+
   @keyframes fade {
-    from {opacity: 0} 
+    from {opacity: 0}
     to {opacity: 1}
   }
 
@@ -1034,7 +1038,7 @@ footer {
 .bottonUp:hover {
     background-color:rgb(240, 240, 240);
     transition: .2s linear;
-} 
+}
 
 /* MEDIA QUERIES */
 
@@ -1054,12 +1058,12 @@ footer {
         margin: 1rem 0;
         animation: move .8s ease-in-out, fadeIn 1.2s ease-in;
     }
-    
+
     .intro_subtitle {
         font-size: 3rem;
         animation: move .8s ease-in-out, fadeIn 1.2s ease-in;
     }
-    
+
     .intro_text {
         font-size: 1.3rem;
         font-weight: 300;
@@ -1318,7 +1322,7 @@ footer {
     .register_form {
         width: 900%;
     }
-    
+
     .register_content {
         width: 100%;
         padding: 0 2rem;
@@ -1331,7 +1335,7 @@ footer {
         flex-wrap: wrap;
         justify-content: center;
     }
-    
+
     .footer_item {
         width: 90%;
         margin-right: 0;
